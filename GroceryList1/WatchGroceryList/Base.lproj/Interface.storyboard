@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NBu-mt-KyX">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+    </dependencies>
+    <scenes>
+        <!--Hosting Controller-->
+        <scene sceneID="RUd-og-cv4">
+            <objects>
+                <hostingController id="NBu-mt-KyX" customClass="HostingController" customModule="WatchGroceryList" customModuleProvider="target">
+                    <connections>
+                        <segue destination="6Hx-gz-WUn" kind="relationship" relationship="nextPage" id="xsp-ip-1ey"/>
+                    </connections>
+                </hostingController>
+            </objects>
+            <point key="canvasLocation" x="187" y="141"/>
+        </scene>
+        <!--Activity Ring View Controller-->
+        <scene sceneID="9dT-P2-076">
+            <objects>
+                <controller id="6Hx-gz-WUn" customClass="ActivityRingViewController" customModule="WatchGroceryList_Extension">
+                    <items>
+                        <label alignment="left" text="Label" id="YPU-Oc-wjS"/>
+                        <activity width="136" height="145" alignment="left" id="R1l-lL-VMK"/>
+                    </items>
+                    <connections>
+                        <outlet property="activityRingLable" destination="YPU-Oc-wjS" id="ydv-HD-5Al"/>
+                        <outlet property="activityRingView" destination="R1l-lL-VMK" id="EqF-dN-bHq"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="488" y="126"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="187" y="462"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="WatchGroceryList" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="488" y="462"/>
+        </scene>
+    </scenes>
+</document>
