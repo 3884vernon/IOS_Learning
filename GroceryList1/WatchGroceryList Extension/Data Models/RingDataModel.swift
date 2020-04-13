@@ -9,8 +9,7 @@
 import SwiftUI
 
 
-struct RingDataModel: Decodable, Identifiable {
-    let id: UUID
+struct RingDataModel: Decodable {
     let Title: String
     let Season: String
     let totalSeasons: String

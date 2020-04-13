@@ -15,36 +15,39 @@ struct ContentView: View {
     
     var body: some View {
         
-//         List(episodes, id: \.Title) { item in
-//            VStack(alignment: .leading) {
-//                           Text(item.Released)
-//                               .font(.headline)
-//                           Text(item.Title)
-//            }
-//         }
-//
-//         .onAppear
-//            {
-//                Api().getJSON { (episodes) in
-//                    self.episodes = episodes.Episodes
-//                    print(episodes.Episodes)
-//                }
-                
-        HStack {
-            Spacer()
-            AnimatedCircle ()
-            VStack {
-EpisodeListView()
-                
+         List(episodes, id: \.Title) { item in
+            VStack(alignment: .leading) {
+                           Text(item.Title)
+                               .font(.headline)
+                           Text(item.Released)
             }
+         }
 
+    .onAppear(perform: getJSON)
+    }
+                func getJSON() {
+                 let urlString = "https:www.omdbapi.com/?apikey=31240b59&t=Game%20of%20Thrones&Season=1"
+                guard let url = URL(string: urlString) else {return}
+                URLSession.shared.dataTask(with: url) { (data,response, error) in
+                            if let data = data {
+                            if let decodedResponse = try? JSONDecoder().decode(ActivityRingDataModel.self, from: data) {
+                                // we have good data – go back to the main thread
+                                DispatchQueue.main.async {
+                                    // update our UI
+                                            self.episodes = decodedResponse.Episodes
+                                }
+                    return
+                    }
+                }
+                    print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+
+                }
+                    .resume()
+                }
         }
-
-    }
-    }
-
-
+        
     
+
 
    struct ContentView_Previews: PreviewProvider {
        static var previews: some View {

@@ -18,7 +18,6 @@
     struct EpisodeModel :Decodable {
         let Title: String
         let Episode: String
-        let Codes:String
         let Released: String
     }
 
