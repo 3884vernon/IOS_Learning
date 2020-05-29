@@ -23,6 +23,7 @@
                 if let  data = data{
                     do{
                        let dataVal1 = try jsonDecoder.decode(ActivityRingDataModel.self, from: data)
+                        print (dataVal1)
                     }catch let error{
                         print(error)
                     }
